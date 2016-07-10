@@ -11,7 +11,7 @@ ansible-doc generates snippets for Sublime Text auto completion
 
 ## Installation
 
-```
+```shell
 # Clone the repo
 $ git clone https://github.com/lxhunter/ansible-sublime-text-snippets.git
 
@@ -36,7 +36,7 @@ $ ./ansible-doc-to-sublime-snippet.sh
 
 ## Uninstallation
 
-```
+```shell
 $ rm -r ~/Library/Application Support/Sublime Text 3/Packages/ansible-sublime-text-snippets
 ```
 
