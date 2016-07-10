@@ -1,0 +1,140 @@
+---
+
+- name: Add or remove groups
+  group:
+    # gid:  Optional `GID' to set for the group.
+    # name:  Name of the group to manage.
+    # state:  Whether the group should be present or not on the remote host.
+    # system:  If `yes', indicates that the group created is a system group.
+
+- name: Manage user accounts
+  user:
+    # append:  If `yes', will only add groups, not set them to just the list in `groups'.
+    # comment:  Optionally sets the description (aka `GECOS') of user account.
+    # createhome:  Unless set to `no', a home directory will be made for the user when the account is created or if the homedirectory does not exist.
+    # expires:  An expiry time for the user in epoch, it will be ignored on platforms that do not support this. Currentlysupported on Linux and FreeBSD.
+    # force:  When used with `state=absent', behavior is as with `userdel --force'.
+    # generate_ssh_key:  Whether to generate a SSH key for the user in question. This will *not* overwrite an existing SSH key.
+    # group:  Optionally sets the user's primary group (takes a group name).
+    # groups:  Puts the user in this comma-delimited list of groups. When set to the empty string ('groups='), the user isremoved from all groups except the primary group.
+    # home:  Optionally set the user's home directory.
+    # login_class:  Optionally sets the user's login class for FreeBSD, OpenBSD and NetBSD systems.
+    # move_home:  If set to `yes' when used with `home=', attempt to move the user's home directory to the specifieddirectory if it isn't there already.
+    # name:  Name of the user to create, remove or modify.
+    # non_unique:  Optionally when used with the -u option, this option allows to change the user ID to a non-unique value.
+    # password:  Optionally set the user's password to this crypted value.  See the user example in the github examplesdirectory for what this looks like in a playbook. Seehttp://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module for details on various ways to generate thesepassword values. Note on Darwin system, this value has to be cleartext.Beware of security issues.
+    # remove:  When used with `state=absent', behavior is as with `userdel --remove'.
+    # seuser:  Optionally sets the seuser type (user_u) on selinux enabled systems.
+    # shell:  Optionally set the user's shell.
+    # skeleton:  Optionally set a home skeleton directory. Requires createhome option!
+    # ssh_key_bits:  Optionally specify number of bits in SSH key to create.
+    # ssh_key_comment:  Optionally define the comment for the SSH key.
+    # ssh_key_file:  Optionally specify the SSH key filename. If this is a relative filename then it will be relative to theuser's home directory.
+    # ssh_key_passphrase:  Set a passphrase for the SSH key.  If no passphrase is provided, the SSH key will default to having nopassphrase.
+    # ssh_key_type:  Optionally specify the type of SSH key to generate. Available SSH key types will depend on implementationpresent on target host.
+    # state:  Whether the account should exist or not, taking action if the state is different from what is stated.
+    # system:  When creating an account, setting this to `yes' makes the user a system account.  This setting cannot bechanged on existing users.
+    # uid:  Optionally sets the `UID' of the user.
+    # update_password:  `always' will update passwords if they differ.  `on_create' will only set the password for newly createdusers.
+
+- name: Send Slack notifications
+  slack:
+    # attachments:  Define a list of attachments. This list mirrors the Slack JSON API. For more information, seehttps://api.slack.com/docs/attachments
+    # channel:  Channel to send the message to. If absent, the message goes to the channel selected for the `token'.
+    # color:  Allow text to use default colors - use the default of 'normal' to not send a custom color bar at the startof the message
+    # domain:  Slack (sub)domain for your environment without protocol. (i.e. `future500.slack.com') In 1.8 and beyond,this is deprecated and may be ignored.  See token documentation forinformation.
+    # icon_emoji:  Emoji for the message sender. See Slack documentation for options. (if `icon_emoji' is set, `icon_url' willnot be used)
+    # icon_url:  Url for the message sender's icon (default `http://www.ansible.com/favicon.ico')
+    # link_names:  Automatically create links for channels and usernames in `msg'.
+    # msg:  Message to send.
+    # parse:  Setting for the message parser at Slack
+    # token:  Slack integration token.  This authenticates you to the slack service. Prior to 1.8, a token looked like`3Ffe373sfhRE6y42Fg3rvf4GlK'.  In 1.8 and above, ansible adapts to the newslack API where tokens look like`G922VJP24/D921DW937/3Ffe373sfhRE6y42Fg3rvf4GlK'.  If tokens are in the newformat then slack will ignore any value of domain.  If the token is in theold format the domain is required.  Ansible has no control of when slackwill get rid of the old API.  When slack does that the old format will stopworking.
+    # username:  This is the sender of the message.
+    # validate_certs:  If `no', SSL certificates will not be validated. This should only be used on personally controlled sitesusing self-signed certificates.
+
+- name: Unpacks an archive after (optionally) copying it from the local machine.
+  unarchive:
+    # copy:  If true, the file is copied from local 'master' to the target machine, otherwise, the plugin will look forsrc archive at the target machine.
+    # creates:  a filename, when it already exists, this step will *not* be run.
+    # dest:  Remote absolute path where the archive should be unpacked
+    # exclude:  List the directory and file entries that you would like to exclude from the unarchive action.
+    # extra_opts:  Specify additional options by passing in an array.
+    # group:  name of the group that should own the file/directory, as would be fed to `chown'
+    # keep_newer:  Do not replace existing files that are newer than files from the archive.
+    # list_files:  If set to True, return the list of files that are contained in the tarball.
+    # mode:  mode the file or directory should be. For those used to `/usr/bin/chmod' remember that modes are actuallyoctal numbers (like 0644). Leaving off the leading zero will likely haveunexpected results. As of version 1.8, the mode may be specified as asymbolic mode (for example, `u+rwx' or `u=rw,g=r,o=r').
+    # owner:  name of the user that should own the file/directory, as would be fed to `chown'
+    # selevel:  level part of the SELinux file context. This is the MLS/MCS attribute, sometimes known as the `range'.`_default' feature works as for `seuser'.
+    # serole:  role part of SELinux file context, `_default' feature works as for `seuser'.
+    # setype:  type part of SELinux file context, `_default' feature works as for `seuser'.
+    # seuser:  user part of SELinux file context. Will default to system policy, if applicable. If set to `_default', itwill use the `user' portion of the policy if available
+    # src:  If copy=yes (default), local path to archive file to copy to the target server; can be absolute orrelative. If copy=no, path on the target server to existing archive file tounpack. If copy=no and src contains ://, the remote machine will downloadthe file from the url first. (version_added 2.0)
+
+- name: Manages apt-packages
+  apt:
+    # allow_unauthenticated:  Ignore if packages cannot be authenticated. This is useful for bootstrapping environments that manage theirown apt-key setup.
+    # autoremove:  If `yes', remove unused dependency packages for all module states except `build-dep'.
+    # cache_valid_time:  If `update_cache' is specified and the last run is less or equal than `cache_valid_time' seconds ago, the`update_cache' gets skipped.
+    # deb:  Path to a .deb package on the remote machine. If :// in the path, ansible will attempt to download debbefore installing. (Version added 2.1)
+    # default_release:  Corresponds to the `-t' option for `apt' and sets pin priorities
+    # dpkg_options:  Add dpkg options to apt command. Defaults to '-o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"' Options should be supplied as comma separated list
+    # force:  If `yes', force installs/removes.
+    # install_recommends:  Corresponds to the `--no-install-recommends' option for `apt'. `yes' installs recommended packages.  `no'does not install recommended packages. By default, Ansible will use the samedefaults as the operating system. Suggested packages are never installed.
+    # name:  A package name, like `foo', or package specifier with version, like `foo=1.0'. Name wildcards (fnmatch)like `apt*' and version wildcards like `foo=1.0*' are also supported.  Notethat the apt-get commandline supports implicit regex matches here but we donot because it can let typos through easier (If you typo `foo' as `fo' apt-get would install packages that have "fo" in their name with a warning and aprompt for the user.  Since we don't have warnings and prompts beforeinstalling we disallow this.  Use an explicit fnmatch pattern if you wantwildcarding)
+    # only_upgrade:  Only install/upgrade a package if it is already installed.
+    # purge:  Will force purging of configuration files if the module state is set to `absent'.
+    # state:  Indicates the desired package state. `latest' ensures that the latest version is installed. `build-dep'ensures the package build dependencies are installed.
+    # update_cache:  Run the equivalent of `apt-get update' before the operation. Can be run as part of the package installationor as a separate step.
+    # upgrade:  If yes or safe, performs an aptitude safe-upgrade. If full, performs an aptitude full-upgrade. If dist,performs an apt-get dist-upgrade. Note: This does not upgrade a specificpackage, use state=latest for that.
+
+- name: Downloads files from HTTP, HTTPS, or FTP to node
+  get_url:
+    # backup:  Create a backup file including the timestamp information so you can get the original file back if yousomehow clobbered it incorrectly.
+    # checksum:  If a checksum is passed to this parameter, the digest of the destination file will be calculated after itis downloaded to ensure its integrity and verify that the transfer completedsuccessfully. Format: <algorithm>:<checksum>, e.g.:checksum="sha256:D98291AC[...]B6DC7B97" If you worry about portability, onlythe sha1 algorithm is available on all platforms and python versions.  Thethird party hashlib library can be installed for access to additionalalgorithms. Additionaly, if a checksum is passed to this parameter, and thefile exist under the `dest' location, the destination_checksum would becalculated, and if checksum equals destination_checksum, the file downloadwould be skipped (unless `force' is true).
+    # dest:  absolute path of where to download the file to. If `dest' is a directory, either the server providedfilename or, if none provided, the base name of the URL on the remote serverwill be used. If a directory, `force' has no effect. If `dest' is adirectory, the file will always be downloaded (regardless of the forceoption), but replaced only if the contents changed.
+    # force:  If `yes' and `dest' is not a directory, will download the file every time and replace the file if thecontents change. If `no', the file will only be downloaded if thedestination does not exist. Generally should be `yes' only for small localfiles. Prior to 0.6, this module behaved as if `yes' was the default.
+    # force_basic_auth:  httplib2, the library used by the uri module only sends authentication information when a webserviceresponds to an initial request with a 401 status. Since some basic authservices do not properly send a 401, logins will fail. This option forcesthe sending of the Basic authentication header upon initial request.
+    # headers:  Add custom HTTP headers to a request in the format "key:value,key:value"
+    # others:  all arguments accepted by the [file] module also work here
+    # sha256sum:  If a SHA-256 checksum is passed to this parameter, the digest of the destination file will be calculatedafter it is downloaded to ensure its integrity and verify that the transfercompleted successfully. This option is deprecated. Use 'checksum'.
+    # timeout:  Timeout in seconds for URL request
+    # tmp_dest:  absolute path of where temporary file is downloaded to. Defaults to TMPDIR, TEMP or TMP env variables or aplatform specific valuehttps://docs.python.org/2/library/tempfile.html#tempfile.tempdir
+    # url:  HTTP, HTTPS, or FTP URL in the form (http|https|ftp)://[user[:pass]]@host.domain[:port]/path
+    # url_password:  The password for use in HTTP basic authentication. If the `url_username' parameter is not specified, the`url_password' parameter will not be used.
+    # url_username:  The username for use in HTTP basic authentication. This parameter can be used without `url_password' forsites that allow empty passwords.
+    # use_proxy:  if `no', it will not use a proxy, even if one is defined in an environment variable on the target hosts.
+    # validate_certs:  If `no', SSL certificates will not be validated. This should only be used on personally controlled sitesusing self-signed certificates.
+
+- name: Templates a file out to a remote server.
+  template:
+    # backup:  Create a backup file including the timestamp information so you can get the original file back if yousomehow clobbered it incorrectly.
+    # dest:  Location to render the template to on the remote machine.
+    # force:  the default is `yes', which will replace the remote file when contents are different than the source.  If`no', the file will only be transferred if the destination does not exist.
+    # group:  name of the group that should own the file/directory, as would be fed to `chown'
+    # mode:  mode the file or directory should be. For those used to `/usr/bin/chmod' remember that modes are actuallyoctal numbers (like 0644). Leaving off the leading zero will likely haveunexpected results. As of version 1.8, the mode may be specified as asymbolic mode (for example, `u+rwx' or `u=rw,g=r,o=r').
+    # owner:  name of the user that should own the file/directory, as would be fed to `chown'
+    # selevel:  level part of the SELinux file context. This is the MLS/MCS attribute, sometimes known as the `range'.`_default' feature works as for `seuser'.
+    # serole:  role part of SELinux file context, `_default' feature works as for `seuser'.
+    # setype:  type part of SELinux file context, `_default' feature works as for `seuser'.
+    # seuser:  user part of SELinux file context. Will default to system policy, if applicable. If set to `_default', itwill use the `user' portion of the policy if available
+    # src:  Path of a Jinja2 formatted template on the Ansible controller. This can be a relative or absolute path.
+    # validate:  The validation command to run before copying into place. The path to the file to validate is passed in via'%s' which must be present as in the example below. The command is passedsecurely so shell features like expansion and pipes won't work.
+
+- name: Copies files to remote locations.
+  copy:
+    # backup:  Create a backup file including the timestamp information so you can get the original file back if yousomehow clobbered it incorrectly.
+    # content:  When used instead of 'src', sets the contents of a file directly to the specified value. This is for simplevalues, for anything complex or with formatting please switch to thetemplate module.
+    # dest:  Remote absolute path where the file should be copied to. If src is a directory, this must be a directorytoo.
+    # directory_mode:  When doing a recursive copy set the mode for the directories. If this is not set we will use the systemdefaults. The mode is only set on directories which are newly created, andwill not affect those that already existed.
+    # follow:  This flag indicates that filesystem links, if they exist, should be followed.
+    # force:  the default is `yes', which will replace the remote file when contents are different than the source. If`no', the file will only be transferred if the destination does not exist.
+    # group:  name of the group that should own the file/directory, as would be fed to `chown'
+    # mode:  mode the file or directory should be. For those used to `/usr/bin/chmod' remember that modes are actuallyoctal numbers (like 0644). Leaving off the leading zero will likely haveunexpected results. As of version 1.8, the mode may be specified as asymbolic mode (for example, `u+rwx' or `u=rw,g=r,o=r').
+    # owner:  name of the user that should own the file/directory, as would be fed to `chown'
+    # remote_src:  If False, it will search for src at originating/master machine, if True it will go to the remote/targetmachine for the src. Default is False. Currently remote_src does not supportrecursive copying.
+    # selevel:  level part of the SELinux file context. This is the MLS/MCS attribute, sometimes known as the `range'.`_default' feature works as for `seuser'.
+    # serole:  role part of SELinux file context, `_default' feature works as for `seuser'.
+    # setype:  type part of SELinux file context, `_default' feature works as for `seuser'.
+    # seuser:  user part of SELinux file context. Will default to system policy, if applicable. If set to `_default', itwill use the `user' portion of the policy if available
+    # src:  Local path to a file to copy to the remote server; can be absolute or relative. If path is a directory, itis copied recursively. In this case, if path ends with "/", only insidecontents of that directory are copied to destination. Otherwise, if it doesnot end with "/", the directory itself with all contents is copied. Thisbehavior is similar to Rsync.
+    # validate:  The validation command to run before copying into place. The path to the file to validate is passed in via'%s' which must be present as in the example below. The command is passedsecurely so shell features like expansion and pipes won't work.
