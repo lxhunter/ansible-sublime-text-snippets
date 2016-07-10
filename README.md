@@ -60,8 +60,8 @@ $ rm -r ~/Library/Application Support/Sublime Text 3/Packages/ansible-sublime-te
 
 ## Credits
 
-[Initial Idea by João Paulo Seregatte](https://github.com/seregatte/AnsibleSnippets)
-Found typos by Dominik Pötschke
+* [Initial Idea by João Paulo Seregatte](https://github.com/seregatte/AnsibleSnippets)
+* Found typos by Dominik Pötschke
 
 ## Contribute
 
