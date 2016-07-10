@@ -5,7 +5,7 @@ ansible-doc generates snippets for Sublime Text auto completion
 ## Requirements
 
 - Sublime Text 2/3+
-- gsed for OSX
+- gnu-sed
 - ansible
 - OSX
 
@@ -21,8 +21,8 @@ $ cd ansible-sublime-text-snippets
 # Create the directory which holds the snippets
 $ mkdir ~/Library/Application Support/Sublime Text 3/Packages/ansible-sublime-text-snippets
 
-# Optional: install coreutils to have gnu sed 
-$ brew install coreutils
+# Optional: install gnu-sed
+$ brew install gnu-sed
 
 # Optional: install ansible
 $ brew install ansible
@@ -61,6 +61,7 @@ $ rm -r ~/Library/Application Support/Sublime Text 3/Packages/ansible-sublime-te
 ## Credits
 
 [Initial Idea by João Paulo Seregatte](https://github.com/seregatte/AnsibleSnippets)
+Found typos by Dominik Pötschke
 
 ## Contribute
 
