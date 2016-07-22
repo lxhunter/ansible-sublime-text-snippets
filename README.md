@@ -19,7 +19,7 @@ $ git clone https://github.com/lxhunter/ansible-sublime-text-snippets.git
 $ cd ansible-sublime-text-snippets
 
 # Create the directory which holds the snippets
-$ mkdir ~/Library/Application Support/Sublime Text 3/Packages/ansible-sublime-text-snippets
+$ mkdir ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/ansible-sublime-text-snippets
 
 # Optional: install gnu-sed
 $ brew install gnu-sed
@@ -37,7 +37,7 @@ $ ./ansible-doc-to-sublime-snippet.sh
 ## Uninstallation
 
 ```shell
-$ rm -r ~/Library/Application Support/Sublime Text 3/Packages/ansible-sublime-text-snippets
+$ rm -r ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/ansible-sublime-text-snippets
 ```
 
 ## Examples
