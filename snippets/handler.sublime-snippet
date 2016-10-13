@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[- name: ${1:start} ${2:name}
+  service:
+    name: ${2:name}
+    state: ${1:start}ed
+]]></content>
+  <tabTrigger>handler</tabTrigger>
+  <scope>source.yaml,source.ansible</scope>
+</snippet>

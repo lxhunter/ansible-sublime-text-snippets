@@ -1,0 +1,5 @@
+<snippet>
+  <content><![CDATA["{{ ${1:item} }}"]]></content>
+  <tabTrigger>item</tabTrigger>
+  <scope>source.yaml</scope>
+</snippet>

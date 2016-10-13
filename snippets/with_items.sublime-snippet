@@ -1,0 +1,7 @@
+<snippet>
+  <content><![CDATA[with_items:
+  - ${1}
+]]></content>
+  <tabTrigger>with_items</tabTrigger>
+  <scope>source.yaml,source.ansible</scope>
+</snippet>

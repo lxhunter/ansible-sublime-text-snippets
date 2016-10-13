@@ -1,0 +1,5 @@
+<snippet>
+  <content><![CDATA[register: ${1}]]></content>
+  <tabTrigger>register</tabTrigger>
+  <scope>source.yaml</scope>
+</snippet>

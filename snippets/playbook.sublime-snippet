@@ -1,0 +1,13 @@
+<snippet>
+  <content><![CDATA[- hosts: ${1:all}
+  become: yes
+  gather_facts: yes
+  vars_files:
+  vars:
+  roles:
+  pre_tasks:
+  post_taks:
+]]></content>
+  <tabTrigger>playbook</tabTrigger>
+  <scope>source.yaml,source.ansible</scope>
+</snippet>

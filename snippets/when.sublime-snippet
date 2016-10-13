@@ -1,0 +1,5 @@
+<snippet>
+  <content><![CDATA[when: ${1} is defined]]></content>
+  <tabTrigger>when</tabTrigger>
+  <scope>source.yaml</scope>
+</snippet>
